@@ -197,7 +197,7 @@ void gen_cap()
 	 	<< ":" << ltm->tm_min << ":" << ltm->tm_min
 		<< ":" << ltm->tm_sec << "</sent>\n";
 	capFile << "<status>" << status << "</status>\n";
-	capFile << "<msgType></msgType>\n";
+	capFile << "<msgType>" << msg_type << "</msgType>\n";
 	capFile << "<scope>Public</scope>";
 
 	capFile << "<info>\n";
