@@ -110,22 +110,3 @@ int add_diagnose(int id, string date, int user, int disease) {
    sqlite3_close(db);
    return 0;
 }
-
-int main()
-{
-
-int id;
-string date;
-int user;
-int disease;
-cout << "enter id:";
-cin>>id;
-cout << "enter date:";
-cin>>date;
-cout << "enter user:";
-cin>>user;
-cout << "enter disease:";
-cin>>disease;
-add_diagnose(id,date,user,disease);
-
-}
