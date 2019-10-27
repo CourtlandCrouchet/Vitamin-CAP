@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<alert>
-<info>
-<area>1</area>
-EEEEBolaAAaaAAA
+<alert xmlns = "urn:oasis:names:tc:emergency:cap:1.1">
+<identifier></identifier>
+<sender></sender>
+<sent>2019-10-27T18:50:50:49</sent>
+<status>Actual</status>
+<msgType></msgType>
+<scope>Public</scope><info>
+<category>Health</category>
+<event>Flu Outbreak</event>
+<urgency>Immediate</urgency>
+<severity>Extreme</severity>
+<certainty>Observed</certainty
+<senderName></senderName>
+<headline>Head</headline>
+<description>Desc</description>
+<instruction>Inst</instruction>
 </info>
 </alert>
