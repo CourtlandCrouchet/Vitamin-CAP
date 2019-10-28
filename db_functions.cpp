@@ -49,115 +49,125 @@ int insert(string table, string query)
     return 0;
 }
 
-//User authortication
-//still working on this
-int user_auth(string username, string password)
+//User authentication
+bool user_auth(string username, string password)
 {
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
     const char *sql;
-    bool login = false;
+    bool loginID;
+    
     
     /* Open database */
     rc = sqlite3_open("vcap.db", &db);
     
     /* Create SQL statement */
-    string temp = "SELECT username, password from users where username = '"+username+"' and password = '"+password+"'";;
+    string temp = "select userid from users where username = '"+username+"' and password = '"+password+"'";;
     const char *line1 = temp.c_str();
     sql = line1;
-    /* Execute SQL statement */
-    rc = sqlite3_exec(db, sql,callback,0, &zErrMsg);
-    cout<<rc<<endl;
-    if(rc == 0)
+    
+    struct sqlite3_stmt *selectstmt;
+    int result = sqlite3_prepare_v2(db, sql, -1, &selectstmt, NULL);
+    if(result == SQLITE_OK)
     {
-        fprintf(stdout,"Login Successful.\n");
-        login = true;
+        if (sqlite3_step(selectstmt) == SQLITE_ROW)
+        {
+            loginID = true;
+        }
     }
-    else
-    {
-        fprintf(stdout,"Incorrect Username or Password.\n");
-        login = false;
-    }
+    sqlite3_finalize(selectstmt);
     sqlite3_close(db);
-    return 0;
-}
-
-int main()
-{
-    //user_auth("nurse","password1");
-    //string sql;
-    //string query;
-    
-    //insert for users
-    /*
-     cout<<"Enter ID:";
-     cin>>query;
-     sql.append(query);
-     sql.append(",");
-     cout<<"Enter Name:";
-     sql.append("'");
-     cin>>query;
-     sql.append(query);
-     sql.append("'");
-     sql.append(",");
-     cout<<"Enter password:";
-     cin>>query;
-     sql.append("'");
-     sql.append(query);
-     sql.append("'");
-     insert("users",sql);
-     sql = "";
-     */
-    
-    //insert for disease
-    /*
-     cout<<"Enter ID:";
-     cin>>query;
-     sql.append(query);
-     sql.append(",");
-     cout<<"Enter Name:";
-     sql.append("'");
-     cin>>query;
-     sql.append(query);
-     sql.append("'");
-     insert("diseases",sql);
-     sql="";
-     */
-    
-    //insert for diagnoses
-    /*
-     cout<<"Enter ID: ";
-     cin>>query;
-     sql.append(query);
-     sql.append(",");
-     cout<<"Enter Date: ";
-     sql.append("'");
-     cin>>query;
-     sql.append(query);
-     sql.append("'");
-     sql.append(",");
-     cout<<"Enter Nurse ID: ";
-     sql.append("'");
-     cin>>query;
-     sql.append(query);
-     sql.append("'");
-     sql.append(",");
-     cout<<"Enter Disease ID: ";
-     sql.append("'");
-     cin>>query;
-     sql.append(query);
-     sql.append("'");
-     insert("Diagnoses",sql);
-     sql="";
-     */
+    return loginID;
 }
 
 
 
+// ***BELOW ARE HOW THE FUNCTIONS ARE CALLED***
 
 
 
+/*
+ bool login = user_auth("nurse1","password5");
+ if(login){
+ cout<<"Login Successful\n";
+ }
+ else
+ {
+ cout<<"Incorrect Username or Password.\n";
+ }
+ */
 
 
+//insert for users
+/*
+ string sql;
+ string query;
+ 
+ cout<<"Enter ID:";
+ cin>>query;
+ sql.append(query);
+ sql.append(",");
+ cout<<"Enter Name:";
+ sql.append("'");
+ cin>>query;
+ sql.append(query);
+ sql.append("'");
+ sql.append(",");
+ cout<<"Enter password:";
+ cin>>query;
+ sql.append("'");
+ sql.append(query);
+ sql.append("'");
+ insert("users",sql);
+ sql = "";
+ */
+
+//insert for disease
+/*
+ string sql;
+ string query;
+ 
+ cout<<"Enter ID:";
+ cin>>query;
+ sql.append(query);
+ sql.append(",");
+ cout<<"Enter Name:";
+ sql.append("'");
+ cin>>query;
+ sql.append(query);
+ sql.append("'");
+ insert("diseases",sql);
+ sql="";
+ */
+
+//insert for diagnoses
+/*
+ string sql;
+ string query;
+ 
+ cout<<"Enter ID: ";
+ cin>>query;
+ sql.append(query);
+ sql.append(",");
+ cout<<"Enter Date: ";
+ sql.append("'");
+ cin>>query;
+ sql.append(query);
+ sql.append("'");
+ sql.append(",");
+ cout<<"Enter Nurse ID: ";
+ sql.append("'");
+ cin>>query;
+ sql.append(query);
+ sql.append("'");
+ sql.append(",");
+ cout<<"Enter Disease ID: ";
+ sql.append("'");
+ cin>>query;
+ sql.append(query);
+ sql.append("'");
+ insert("Diagnoses",sql);
+ sql="";
+*/
 
