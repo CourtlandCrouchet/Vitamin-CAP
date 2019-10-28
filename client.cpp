@@ -18,7 +18,7 @@ void error(char *msg)
     exit(0);
 }
 
-void ConnectToUser(string hostname, int port, string message){
+void ConnectToUser(string hostname, int port){
     int sockfd, portno, n;
 
     struct sockaddr_in serv_addr;
@@ -43,20 +43,30 @@ void ConnectToUser(string hostname, int port, string message){
     if (connect(sockfd,(struct sockaddr *)&serv_addr,sizeof(serv_addr)) < 0) 
         error("ERROR connecting");
 
-    n = write(sockfd,message.c_str(),strlen(message.c_str()));
+    int bytes = 10000;
+    string output(bytes,0);
+    if(read(sockfd,&output[0],bytes-1) < 0){
+        cout << "Error: Failed to read from socket" << endl;
+        return;
+    }
+    cout << output << endl;
+
+    ofstream outFile("message.txt");
+    if(outFile.is_open()){
+        outFile << output;
+        outFile.close();
+    }
 
 }
 
 int main(int argc, char *argv[])
 {
-    std::ifstream t("file.txt");
-    std::string input((std::istreambuf_iterator<char>(t)),
-                    std::istreambuf_iterator<char>());
+    
     if (argc < 3) {
        fprintf(stderr,"usage %s hostname port\n", argv[0]);
        exit(0);
     }
-    ConnectToUser(argv[1], atoi(argv[2]),input);
+    ConnectToUser(argv[1], atoi(argv[2]));
     
     return 0;
 }
