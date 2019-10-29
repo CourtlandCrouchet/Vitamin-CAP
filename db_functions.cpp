@@ -7,7 +7,6 @@ using namespace std;
 
 static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
     int i;
-    //prints table info
     for(i = 0; i<argc; i++) {
         printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
     }
@@ -33,7 +32,6 @@ int insert(string table, string query)
     }
     /* Create SQL statement */
     string temp = "INSERT INTO " +table+ " VALUES ("+query+");";
-    cout<<temp<<endl;
     const char *line1 = temp.c_str();
     sql = line1;
     /* Execute SQL statement */
@@ -49,19 +47,17 @@ int insert(string table, string query)
     return 0;
 }
 
-//User authentication
-bool user_auth(string username, string password)
+//User authortication
+int user_auth(string username, string password)
 {
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
     const char *sql;
-    bool loginID;
-    
+    int loginID;
     
     /* Open database */
     rc = sqlite3_open("vcap.db", &db);
-    
     /* Create SQL statement */
     string temp = "select userid from users where username = '"+username+"' and password = '"+password+"'";;
     const char *line1 = temp.c_str();
@@ -73,7 +69,7 @@ bool user_auth(string username, string password)
     {
         if (sqlite3_step(selectstmt) == SQLITE_ROW)
         {
-            loginID = true;
+            loginID = sqlite3_column_int(selectstmt,0);
         }
     }
     sqlite3_finalize(selectstmt);
@@ -85,10 +81,10 @@ bool user_auth(string username, string password)
 
 // ***BELOW ARE HOW THE FUNCTIONS ARE CALLED***
 
-
-
+//User auth function
 /*
- bool login = user_auth("nurse1","password5");
+ int login = user_auth("nurse1","nurse20");
+ cout<<login<<endl;
  if(login){
  cout<<"Login Successful\n";
  }
@@ -169,5 +165,4 @@ bool user_auth(string username, string password)
  sql.append("'");
  insert("Diagnoses",sql);
  sql="";
-*/
-
+ */
