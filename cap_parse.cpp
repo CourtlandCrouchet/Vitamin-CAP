@@ -7,9 +7,9 @@
 using namespace rapidxml;
 using namespace std;
 
-int main()
+void cap_parse()
 {
-	
+
 	xml_document<> doc;
 	xml_node<> * root_node;
 	xml_node<> * info_node;

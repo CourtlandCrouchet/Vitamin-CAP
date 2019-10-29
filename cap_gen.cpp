@@ -207,7 +207,7 @@ void gen_cap()
 	capFile << "<event>" << disease << " Outbreak</event>\n";
 	capFile << "<urgency>" << urgency << "</urgency>\n";
 	capFile << "<severity>" << severity << "</severity>\n";
-	capFile << "<certainty>" << certainty << "</certainty\n";
+	capFile << "<certainty>" << certainty << "</certainty>\n";
 	capFile << "<senderName></senderName>\n";
 	capFile << "<headline>" << headline << "</headline>\n";
 	capFile << "<description>" << description << "</description>\n";

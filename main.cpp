@@ -2,6 +2,7 @@
 #include <string>
 #include "main.hpp"
 #include "client.hpp"
+#include "cap_parse.hpp"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ void listener(){
 	string ip_addr = "127.0.0.1";
 	//Function takes an IP address and port no
   ConnectToUser(ip_addr, port);
+	cap_parse();
 	menu();
 }
 
