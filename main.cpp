@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string>
 #include "main.hpp"
+#include "client.hpp"
 
 using namespace std;
 
@@ -27,6 +29,10 @@ void reg(){
 }
 //todo: run client
 void listener(){
+	int port = 49999;
+	string ip_addr = "172.16.175.141";
+	//Function takes an IP address and port no
+  ConnectToUser(ip_addr, port);
 	menu();
 }
 

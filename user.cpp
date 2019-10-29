@@ -1,6 +1,7 @@
 #include <iostream>
 #include "user.hpp"
 #include "cap_gen.hpp"
+#include "server.hpp"
 
 using namespace std;
 

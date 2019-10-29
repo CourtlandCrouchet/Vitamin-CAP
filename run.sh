@@ -1,5 +1,8 @@
 #!/bin/bash
 
-g++ main.cpp user.cpp cap_gen.cpp -o main
+g++ -o main main.cpp  \
+            user.cpp \
+            cap_gen.cpp \
+            client.cpp
 
 ./main
