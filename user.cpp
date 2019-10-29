@@ -14,7 +14,13 @@ void stats(){
 }
 
 void send_msg(){
+  int port = 49999;
   gen_cap();
+  ifstream t("CAP.xml");
+  string input((istreambuf_iterator<char>(t)),
+  istreambuf_iterator<char>());
+  //Function accepts a port no and a message to send
+  SetupHospital(port,input);
   user_menu();
 }
 
@@ -22,6 +28,7 @@ void user_menu() {
   int opt = -1;
 	bool valid = false;
 
+  cout << "\n";
 	cout << "Select an Option\n";
 	cout << "[0] - Back \n";
 	cout << "[1] - Input New\n";
@@ -37,7 +44,7 @@ void user_menu() {
 					- check for characters
           - fix flow bugs
 		*/
-    cout << "Option:";
+    cout << "Option: ";
     cin >> opt;
 
     switch(opt){

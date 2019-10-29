@@ -10,6 +10,6 @@
 
 using namespace std;
 
-void error(char *msg);
+void srv_error(char *msg);
 
 void SetupHospital(int port, string message);

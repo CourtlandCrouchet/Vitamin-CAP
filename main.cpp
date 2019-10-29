@@ -30,7 +30,7 @@ void reg(){
 //todo: run client
 void listener(){
 	int port = 49999;
-	string ip_addr = "172.16.175.141";
+	string ip_addr = "127.0.0.1";
 	//Function takes an IP address and port no
   ConnectToUser(ip_addr, port);
 	menu();
@@ -40,6 +40,7 @@ void menu() {
 	int opt = -1;
 	//bool valid = false;
 
+	cout << "\n";
 	cout << "Select an Option\n";
 	cout << "[0] - Exit \n";
 	cout << "[1] - User Login\n";
@@ -48,7 +49,7 @@ void menu() {
 	cout << "\n";
 
 	while(true){
-		cout << "Option:";
+		cout << "Option: ";
 		cin >> opt;
 
 		/* todo:
@@ -56,6 +57,9 @@ void menu() {
 					- fix flow bugs
 		*/
 		switch(opt){
+			case -1: {
+				break;
+			}
 			case 0:
 				exit(0);
 
