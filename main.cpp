@@ -32,16 +32,16 @@ void listener(){
 
 void menu() {
 	int opt = -1;
-	bool valid = false;
+	//bool valid = false;
 
 	cout << "Select an Option\n";
 	cout << "[0] - Exit \n";
 	cout << "[1] - User Login\n";
 	cout << "[2] - User Registration\n";
-	cout << "[3] - Send Message\n";
+	cout << "[3] - Run Listener\n";
 	cout << "\n";
 
-	while(!valid){
+	while(true){
 		cout << "Option:";
 		cin >> opt;
 
@@ -49,31 +49,28 @@ void menu() {
 					- check for characters
 					- fix flow bugs
 		*/
-		if (opt < 0 || opt > 3) {
-			cout << "Invalid option, please try again." << endl;
-		}
-		else {
-			switch(opt){
-				case 0:
-					exit(0);
+		switch(opt){
+			case 0:
+				exit(0);
 
-				case 1: {
-					login();
-					break;
-				}
-
-				case 2: {
-					reg();
-					break;
-				}
-
-				case 3: {
-					send();
-					break;
-				}
+			case 1: {
+				login();
+				break;
 			}
 
-			//valid = true;
+			case 2: {
+				reg();
+				break;
+			}
+
+			case 3: {
+				listener();
+				break;
+			}
+
+			default: {
+				cout << "Invalid option, please try again." << endl;
+			}
 		}
 	}
 }

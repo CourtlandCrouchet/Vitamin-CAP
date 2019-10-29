@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
 #define MAX_HEADLINE_LENGTH  60
 #define MAX_DESCRIPTION_LENGTH  200
 #define MAX_INSTRUCTION_LENGTH  200
+
 void gen_cap()
 {
 	char headline[MAX_HEADLINE_LENGTH], description[MAX_DESCRIPTION_LENGTH], instr[MAX_INSTRUCTION_LENGTH];
@@ -64,8 +66,8 @@ void gen_cap()
 	cout << "\nEnter Disease Name\n";
 	string disease;
 	cin >> disease;
-	
-	
+
+
 	cout << "\nSelect Location\n";
 
 	cout << "1: Student Health Center\n";
@@ -171,7 +173,7 @@ void gen_cap()
 	cout << "\nEnter a Headline for the Alert\n";
 	// string headline;
 	cin.getline(headline, MAX_HEADLINE_LENGTH);
-	
+
 	cout << "\nEnter a Description for the Alert\n";
 	// string description;
 	cin.getline(description, MAX_DESCRIPTION_LENGTH);
@@ -194,18 +196,18 @@ void gen_cap()
 	capFile << "<sender></sender>\n";
 	capFile << "<sent>" << ltm->tm_year+1900 << "-" << ltm->tm_mon+1
 		<< "-" << ltm->tm_mday << "T" << ltm->tm_hour
-	 	<< ":" << ltm->tm_min << ":" << ltm->tm_sec
-		<< ":" << ltm->tm_gmtoff << "</sent>\n";
+	 	<< ":" << ltm->tm_min << ":" << ltm->tm_min
+		<< ":" << ltm->tm_sec << "</sent>\n";
 	capFile << "<status>" << status << "</status>\n";
 	capFile << "<msgType>" << msg_type << "</msgType>\n";
-	capFile << "<scope>Public</scope>\n";
+	capFile << "<scope>Public</scope>";
 
 	capFile << "<info>\n";
 	capFile << "<category>Health</category>\n";
 	capFile << "<event>" << disease << " Outbreak</event>\n";
 	capFile << "<urgency>" << urgency << "</urgency>\n";
 	capFile << "<severity>" << severity << "</severity>\n";
-	capFile << "<certainty>" << certainty << "</certainty>\n";
+	capFile << "<certainty>" << certainty << "</certainty\n";
 	capFile << "<senderName></senderName>\n";
 	capFile << "<headline>" << headline << "</headline>\n";
 	capFile << "<description>" << description << "</description>\n";
@@ -214,13 +216,13 @@ void gen_cap()
 	// capFile << msg << "\n";
 	capFile << "</info>\n";
 
-	capFile << "</alert>\n";	
+	capFile << "</alert>\n";
 
 	capFile.close();
 }
 
 
-int main() {
-	gen_cap();
-	return 0;
-}
+// int main() {
+// 	gen_cap();
+// 	return 0;
+// }
