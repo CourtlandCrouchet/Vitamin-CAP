@@ -1,5 +1,5 @@
 #!/bin/bash
 
-g++ main.cpp -o main
+g++ main.cpp user.cpp -o main
 
 ./main

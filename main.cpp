@@ -17,15 +17,20 @@ todo:
 	- authenticate user
 	- open user menu
 */
-void login(){}
+void login(){
+	user_menu();
+	menu();
+}
 //todo: add a new user
-void reg(){}
+void reg(){
+	menu();
+}
 //todo: run client
-void listener(){}
+void listener(){
+	menu();
+}
 
-int main() {
-	title();
-
+void menu() {
 	int opt = -1;
 	bool valid = false;
 
@@ -37,40 +42,45 @@ int main() {
 	cout << "\n";
 
 	while(!valid){
-		switch(opt){
-			case 0:
-				exit(0);
-
-			case 1: {
-				login();
-				break;
-			}
-
-			case 2: {
-				reg();
-				break;
-			}
-
-			case 3: {
-				send();
-				break;
-			}
-		}
-
 		cout << "Option:";
 		cin >> opt;
 
 		/* todo:
 					- check for characters
+					- fix flow bugs
 		*/
 		if (opt < 0 || opt > 3) {
-			cout << "Invalid option, please try again.";
+			cout << "Invalid option, please try again." << endl;
 		}
 		else {
-			valid = true;
+			switch(opt){
+				case 0:
+					exit(0);
+
+				case 1: {
+					login();
+					break;
+				}
+
+				case 2: {
+					reg();
+					break;
+				}
+
+				case 3: {
+					send();
+					break;
+				}
+			}
+
+			//valid = true;
 		}
 	}
+}
 
+int main() {
+	title();
+	menu();
 
 	return 0;
 }
