@@ -9,7 +9,7 @@ void gen_cap()
 {
 	char headline[MAX_HEADLINE_LENGTH], description[MAX_DESCRIPTION_LENGTH], instr[MAX_INSTRUCTION_LENGTH];
 	ofstream capFile;
-	capFile.open("CAP.txt");
+	capFile.open("CAP.xml");
 
 	int key_in;
 
@@ -194,18 +194,18 @@ void gen_cap()
 	capFile << "<sender></sender>\n";
 	capFile << "<sent>" << ltm->tm_year+1900 << "-" << ltm->tm_mon+1
 		<< "-" << ltm->tm_mday << "T" << ltm->tm_hour
-	 	<< ":" << ltm->tm_min << ":" << ltm->tm_min
-		<< ":" << ltm->tm_sec << "</sent>\n";
+	 	<< ":" << ltm->tm_min << ":" << ltm->tm_sec
+		<< ":" << ltm->tm_gmtoff << "</sent>\n";
 	capFile << "<status>" << status << "</status>\n";
 	capFile << "<msgType>" << msg_type << "</msgType>\n";
-	capFile << "<scope>Public</scope>";
+	capFile << "<scope>Public</scope>\n";
 
 	capFile << "<info>\n";
 	capFile << "<category>Health</category>\n";
 	capFile << "<event>" << disease << " Outbreak</event>\n";
 	capFile << "<urgency>" << urgency << "</urgency>\n";
 	capFile << "<severity>" << severity << "</severity>\n";
-	capFile << "<certainty>" << certainty << "</certainty\n";
+	capFile << "<certainty>" << certainty << "</certainty>\n";
 	capFile << "<senderName></senderName>\n";
 	capFile << "<headline>" << headline << "</headline>\n";
 	capFile << "<description>" << description << "</description>\n";

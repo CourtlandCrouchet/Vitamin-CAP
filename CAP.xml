@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert>
+	<identifier>123</identifier>
+	<sender>123</sender>
+	<sent>2019-10-27T18:50:49-07:00</sent>
+	<status>Actual</status>
+	<msgType>Alert</msgType>
+	<scope>Public</scope>
+	<info>
+		<category>Health</category>
+		<event>Flu Outbreak</event>
+		<urgency>Immediate</urgency>
+		<severity>Extreme</severity>
+		<certainty>Observed</certainty>
+		<senderName></senderName>
+		<headline>Head</headline>
+		<description>Desc</description>
+		<instruction></instruction>
+	</info>
+</alert>
