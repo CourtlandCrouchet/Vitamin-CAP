@@ -32,7 +32,6 @@ int insert(string table, string query)
     }
     /* Create SQL statement */
     string temp = "INSERT INTO " +table+ " VALUES ("+query+");";
-    cout<<temp<<endl;
     const char *line1 = temp.c_str();
     sql = line1;
     /* Execute SQL statement */
@@ -84,7 +83,7 @@ int user_auth(string username, string password)
 
 //User auth function
 /*
- int login = user_auth("nurse5","password4");
+ int login = user_auth("nurse1","nurse20");
  cout<<login<<endl;
  if(login){
  cout<<"Login Successful\n";
@@ -167,13 +166,3 @@ int user_auth(string username, string password)
  insert("Diagnoses",sql);
  sql="";
  */
-
-
-
-
-
-
-
-
-
-
