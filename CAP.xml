@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns = "urn:oasis:names:tc:emergency:cap:1.1">
+<identifier></identifier>
+<sender></sender>
+<sent>2019-10-29T10:15:15:9</sent>
+<status>Actual</status>
+<msgType>Alert</msgType>
+<scope>Public</scope><info>
+<category>Health</category>
+<event>EBOLA Outbreak</event>
+<urgency>Immediate</urgency>
+<severity>Extreme</severity>
+<certainty>Observed</certainty>
+<senderName></senderName>
+<headline>DISEASE OUTBREAK</headline>
+<description>EBOLA GOIN ROUND</description>
+<instruction>RUN HIDE OR FIGHT</instruction>
+</info>
+</alert>
