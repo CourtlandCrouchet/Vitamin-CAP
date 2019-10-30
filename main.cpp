@@ -3,6 +3,7 @@
 #include "main.hpp"
 #include "client.hpp"
 #include "cap_parse.hpp"
+#include "db_functions.hpp"
 
 using namespace std;
 
@@ -21,11 +22,41 @@ todo:
 	- open user menu
 */
 void login(){
-	user_menu();
+	string user, passwd;
+	int uid = 0;
+	cout << "\nUser: ";
+	cin >> user;
+	cout << "\nPassword: ";
+	cin >> passwd;
+	uid = user_auth(user, passwd);
+	cout << uid << endl;
+	if (uid && uid < 100)
+		user_menu();
+	else
+		cout << "User not found." << endl;
 	menu();
 }
 //todo: add a new user
 void reg(){
+	string sql, query;
+
+  cout<<"New ID: ";
+  cin>>query;
+  sql.append(query);
+  sql.append(",");
+  cout<<"Enter Name:";
+  sql.append("'");
+  cin>>query;
+  sql.append(query);
+  sql.append("'");
+  sql.append(",");
+  cout<<"Enter password:";
+  cin>>query;
+  sql.append("'");
+  sql.append(query);
+  sql.append("'");
+  insert("users",sql);
+  sql = "";
 	menu();
 }
 //todo: run client
