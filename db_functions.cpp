@@ -1,3 +1,8 @@
+/*
+ Author(s): Cameron Navero
+ Updated: 11-04-2019
+ Description: Functions for all database calls and updates.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
@@ -31,7 +36,7 @@ int insert(string table, string query)
         fprintf(stderr, "Opened database successfully\n");
     }
     /* Create SQL statement */
-    string temp = "INSERT INTO " +table+ " VALUES ("+query+");";
+    string temp = "INSERT INTO " +table+ " VALUES (null,"+query+");";
     const char *line1 = temp.c_str();
     sql = line1;
     /* Execute SQL statement */
@@ -54,12 +59,12 @@ int user_auth(string username, string password)
     char *zErrMsg = 0;
     int rc;
     const char *sql;
-    int loginID;
+    int loginID=0;
     
     /* Open database */
     rc = sqlite3_open("vcap.db", &db);
     /* Create SQL statement */
-    string temp = "select userid from users where username = '"+username+"' and password = '"+password+"'";;
+    string temp = "select userid from users where username = '"+username+"' and password = '"+password+"';";
     const char *line1 = temp.c_str();
     sql = line1;
     
@@ -83,7 +88,25 @@ int user_auth(string username, string password)
 
 //User auth function
 /*
- int login = user_auth("nurse1","nurse20");
+ int login = user_auth("nurse9","password5");
+ cout<<login<<endl;
+ if(login){
+ cout<<"Login Successful\n";
+ }
+ else
+ {
+ cout<<"Incorrect Username or Password.\n";
+ }
+ login = user_auth("nurse1","nurse20");
+ cout<<login<<endl;
+ if(login){
+ cout<<"Login Successful\n";
+ }
+ else
+ {
+ cout<<"Incorrect Username or Password.\n";
+ }
+ login = user_auth("nurse1","password1");
  cout<<login<<endl;
  if(login){
  cout<<"Login Successful\n";
@@ -100,10 +123,6 @@ int user_auth(string username, string password)
  string sql;
  string query;
  
- cout<<"Enter ID:";
- cin>>query;
- sql.append(query);
- sql.append(",");
  cout<<"Enter Name:";
  sql.append("'");
  cin>>query;
@@ -124,10 +143,6 @@ int user_auth(string username, string password)
  string sql;
  string query;
  
- cout<<"Enter ID:";
- cin>>query;
- sql.append(query);
- sql.append(",");
  cout<<"Enter Name:";
  sql.append("'");
  cin>>query;
@@ -141,21 +156,21 @@ int user_auth(string username, string password)
 /*
  string sql;
  string query;
+ int loginID = user_auth("nurse5","password5");
+ cout<<loginID<<endl;
+ if(loginID){
+ cout<<"Login Successful\n";
+ }
  
- cout<<"Enter ID: ";
- cin>>query;
- sql.append(query);
- sql.append(",");
  cout<<"Enter Date: ";
  sql.append("'");
  cin>>query;
  sql.append(query);
  sql.append("'");
  sql.append(",");
- cout<<"Enter Nurse ID: ";
+ //use current loginID for Nurse ID
  sql.append("'");
- cin>>query;
- sql.append(query);
+ sql.append(to_string(loginID));
  sql.append("'");
  sql.append(",");
  cout<<"Enter Disease ID: ";
