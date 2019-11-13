@@ -13,6 +13,7 @@
 #include <arpa/inet.h>
 #include <pthread.h>
 #include <string>
+#include <iostream>
 
 #define BUFSIZE 100
 using namespace std;
@@ -34,6 +35,7 @@ typedef struct Client {
 } Client;
 
 void start_hospital(string message){
+  char in;                       // Character from std in to quit accepting
   int listen_fd;                 // file descriptor for listening
   int fd;                        // file descriptor connection to current client
   struct sockaddr_in servaddr;   // info about the server's port number, etc.
@@ -110,6 +112,12 @@ void start_hospital(string message){
     // create a new thread to handle the client that has connected and hand off
     // duties for this client.
     pthread_create(&client_thread, NULL, Thread, clientinfo);
+    printf("Press q to quit or any other key to accept more clients\n");
+    cin >> in;
+    if(in == 'q'){
+      return;
+    }    
+
   }
 }
 
@@ -124,7 +132,7 @@ void *Thread(void *args) {
   
   write(clientinfo->fd, clientinfo->message.c_str(), clientinfo->message.size());
     
-  printf("Thread %p lost connection with client, dying.\n", myid);
+  printf("Thread %p closed connection with client, dying.\n", myid);
   free(args);
   return NULL;
 }
