@@ -64,15 +64,15 @@ void ConnectToUser(string hostname, int port){
 
 }
 
-// int main(int argc, char *argv[])
-// {
-//
-//     if (argc < 3) {
-//        fprintf(stderr,"usage %s hostname port\n", argv[0]);
-//        exit(0);
-//     }
-//     // Function takes an IP address and port no
-//     ConnectToUser(argv[1], atoi(argv[2]));
-//
-//     return 0;
-// }
+int main(int argc, char *argv[])
+{
+
+    if (argc < 3) {
+       fprintf(stderr,"usage %s hostname port\n", argv[0]);
+       exit(0);
+    }
+    // Function takes an IP address and port no
+    ConnectToUser(argv[1], atoi(argv[2]));
+
+    return 0;
+      }
