@@ -1,22 +1,22 @@
 .open vcap.db
 create table users(
-userID integer primary key autoincrement,
+id integer primary key autoincrement,
 username text not null,
 password text not null
 );
 
 create table diseases(
-diseaseID integer primary key autoincrement,
+id integer primary key autoincrement,
 name text not null
 );
 
 create table diagnoses(
-diagnoseID integer primary key autoincrement,
+id integer primary key autoincrement,
 diagnoseDate date not null,
 userID int not null,
 diseaseID int not null,
-foreign key (userID) references users(userID),
-foreign key (diseaseID) references diseases(diseaseID)
+foreign key (userID) references users(id),
+foreign key (diseaseID) references diseases(id)
 );
 
 insert into users values(null,"nurse1","password1");
@@ -50,8 +50,3 @@ insert into diagnoses values(null,'2019-09-13',04,03);
 insert into diagnoses values(null,'2019-08-05',01,02);
 insert into diagnoses values(null,'2019-09-08',02,08);
 insert into diagnoses values(null,'2019-09-01',05,03);
-
-
-
-
-
