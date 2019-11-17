@@ -22,7 +22,6 @@ void title() {
 	cout << "                                                 |_|   "		<< endl;
 }
 
-//Author: Cameron
 void login(){
 	string user, passwd;
 	int uid = 0;
@@ -31,7 +30,7 @@ void login(){
 	cout << "\nPassword: ";
 	cin >> passwd;
 	uid = user_auth(user, passwd);
-	cout << uid << endl;
+	//cout << uid << endl;
 	if (uid)
 	//if (uid && uid < 100)
 		user_menu();
@@ -40,7 +39,6 @@ void login(){
 	menu();
 }
 
-//Author: Cameron
 void reg(){
 	string sql, query;
   cout<<"Enter Name:";
