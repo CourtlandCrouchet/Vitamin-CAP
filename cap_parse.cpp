@@ -1,3 +1,6 @@
+/*
+Author: Courtland Crouchet
+*/
 #include <string.h>
 #include <stdio.h>
 #include <iostream>

@@ -2,7 +2,7 @@
  Author(s): Cameron Navero
  Updated: 11/14/2019
  Description: Function for calling and updating the database.
- */
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,10 +27,10 @@ int insert(string table, string query)
     char *zErrMsg = 0;
     int rc;
     const char *sql;
-    
+
     /* Open database */
     rc = sqlite3_open("vcap.db", &db);
-    
+
     if( rc ) {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         return(0);
@@ -43,7 +43,7 @@ int insert(string table, string query)
     sql = line1;
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-    
+
     if( rc != SQLITE_OK ){
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
         sqlite3_free(zErrMsg);
@@ -62,14 +62,14 @@ int user_auth(string username, string password)
     int rc;
     const char *sql;
     int loginID=0;
-    
+
     /* Open database */
     rc = sqlite3_open("vcap.db", &db);
     /* Create SQL statement */
     string temp = "select userid from users where username = '"+username+"' and password = '"+password+"';";
     const char *line1 = temp.c_str();
     sql = line1;
-    
+
     struct sqlite3_stmt *selectstmt;
     int result = sqlite3_prepare_v2(db, sql, -1, &selectstmt, NULL);
     if(result == SQLITE_OK)
@@ -91,24 +91,24 @@ int select(string query)
     int rc;
     const char *sql;
     const char* data = "Callback function called";
-    
+
     /* Open database */
     rc = sqlite3_open("vcap.db", &db);
-    
+
     if( rc ) {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
         return(0);
     } else {
         fprintf(stderr, "Opened database successfully\n");
     }
-    
+
     /* Create SQL statement */
     //returns disease with count
     const char *temp = query.c_str();
     sql = temp;
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
-    
+
     if( rc != SQLITE_OK ) {
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
         sqlite3_free(zErrMsg);
@@ -168,7 +168,7 @@ int select(string query)
 /*
  string sql;
  string query;
- 
+
  cout<<"Enter Name:";
  sql.append("'");
  cin>>query;
@@ -188,7 +188,7 @@ int select(string query)
 /*
  string sql;
  string query;
- 
+
  cout<<"Enter Name:";
  sql.append("'");
  cin>>query;
@@ -202,7 +202,7 @@ int select(string query)
 /*
  string sql;
  string query;
- 
+
  cout<<"Enter Date: ";
  sql.append("'");
  cin>>query;
@@ -226,9 +226,3 @@ int select(string query)
 
 //select count of disease desc
 //string sql = "SELECT name,count(name) from Diagnoses , Diseases WHERE diseases.diseaseID = diagnoses.DiseaseID GROUP BY name ORDER BY count(name) desc";
-
-
-
-
-
-

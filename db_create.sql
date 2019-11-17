@@ -1,3 +1,8 @@
+/*
+ Author(s): Cameron Navero
+ Updated: 11/14/2019
+ Description: Function for calling and updating the database.
+*/
 .open vcap.db
 create table users(
 userID integer primary key autoincrement,
@@ -50,8 +55,3 @@ insert into diagnoses values(null,'2019-09-13',04,03);
 insert into diagnoses values(null,'2019-08-05',01,02);
 insert into diagnoses values(null,'2019-09-08',02,08);
 insert into diagnoses values(null,'2019-09-01',05,03);
-
-
-
-
-

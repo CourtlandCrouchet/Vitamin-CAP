@@ -1,3 +1,8 @@
+/*
+Author(s): Raphaela, JJ
+Updated: 11/16/19
+Description: User interface post-authentication
+*/
 #include <iostream>
 #include "user.hpp"
 #include "cap_gen.hpp"
@@ -6,19 +11,28 @@
 
 using namespace std;
 
+void stats(){
+  string sql;
+  //Count diseases and orders them by DESC
+  sql = "SELECT name,count(name) from Diagnoses , Diseases WHERE diseases.diseaseID = diagnoses.DiseaseID GROUP BY name ORDER BY count(name) desc";
+  //select(sql);
+  //Return username and the number of diagnoses inputed
+  sql = "SELECT username, count(diagnoses.userID) FROM users, diagnoses WHERE users.userID = diagnoses.userID GROUP BY diagnoses.userID";
+  //select(sql);
+  //Returns the disease within the last 7 days with the count
+  sql = "SELECT name , count(diagnoses.diseaseID) FROM diseases, diagnoses WHERE diagnoseDate > (SELECT DATE('now','-7 day')) AND diagnoses.diseaseID=diseases.diseaseID GROUP BY diagnoses.diseaseID";
+  //select(sql);
+  user_menu();
+}
+
 void input_new(){
   new_menu();
   user_menu();
 }
 
 void new_diagnose(){
-  string sql;
-  string query;
+  string sql, query;
 
-  cout<<"Enter ID: ";
-  cin>>query;
-  sql.append(query);
-  sql.append(",");
   cout<<"Enter Date: ";
   sql.append("'");
   cin>>query;
@@ -41,13 +55,8 @@ void new_diagnose(){
 }
 
 void new_disease(){
-  string sql;
-  string query;
+  string sql, query;
 
-  cout<<"Enter ID:";
-  cin>>query;
-  sql.append(query);
-  sql.append(",");
   cout<<"Enter Name:";
   sql.append("'");
   cin>>query;
@@ -97,10 +106,6 @@ void new_menu(){
       }
 		} //switch
 	}//while
-}
-
-void stats(){
-  user_menu();
 }
 
 void send_msg(){

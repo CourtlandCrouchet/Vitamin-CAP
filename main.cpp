@@ -1,3 +1,8 @@
+/*
+Author(s): Raphaela, JJ
+Updated: 11/16/19
+Description: Main program of the application
+*/
 #include <iostream>
 #include <string>
 #include "main.hpp"
@@ -16,11 +21,8 @@ void title() {
 	cout << "   \\_/ |_|\\__\\__,_|_| |_| |_|_|_| |_| \\____/\\__,_| .__/ " 	<< endl;
 	cout << "                                                 |_|   "		<< endl;
 }
-/*
-todo:
-	- authenticate user
-	- open user menu
-*/
+
+//Author: Cameron
 void login(){
 	string user, passwd;
 	int uid = 0;
@@ -30,20 +32,17 @@ void login(){
 	cin >> passwd;
 	uid = user_auth(user, passwd);
 	cout << uid << endl;
-	if (uid && uid < 100)
+	if (uid)
+	//if (uid && uid < 100)
 		user_menu();
 	else
 		cout << "User not found." << endl;
 	menu();
 }
-//todo: add a new user
+
+//Author: Cameron
 void reg(){
 	string sql, query;
-
-  cout<<"New ID: ";
-  cin>>query;
-  sql.append(query);
-  sql.append(",");
   cout<<"Enter Name:";
   sql.append("'");
   cin>>query;
@@ -59,7 +58,7 @@ void reg(){
   sql = "";
 	menu();
 }
-//todo: run client
+
 void listener(){
 	int port = 49999;
 	string ip_addr = "127.0.0.1";

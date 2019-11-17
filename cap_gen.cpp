@@ -1,3 +1,6 @@
+/*
+Author: Courtland Crouchet
+*/
 #include <iostream>
 #include <fstream>
 
