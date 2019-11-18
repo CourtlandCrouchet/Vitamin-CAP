@@ -15,3 +15,4 @@ int insert(string table, string query);
 int user_auth(string username, string password);
 int sql_select(string query);
 int _delete(string table, int id);
+int sql_update (string table, string field, string value , int id);

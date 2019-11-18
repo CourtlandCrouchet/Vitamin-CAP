@@ -68,9 +68,9 @@ void listener(){
 
 void menu() {
 	int opt = -1;
-	bool valid = false;
+	//bool valid = false;
 
-	while(!valid){
+//	while(!valid){
 		cout << "\n";
 		cout << "Select an Option\n";
 		cout << "[0] - Exit \n";
@@ -88,7 +88,7 @@ void menu() {
 		*/
 		switch(opt){
 			case -1: {
-				valid = true;
+				//valid = true;
 				break;
 			}
 			case 0:
@@ -111,9 +111,10 @@ void menu() {
 
 			default: {
 				cout << "Invalid option, please try again." << endl;
+				menu();
 			}
 		}
-	}
+	//}
 }
 
 int main() {

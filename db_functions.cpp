@@ -170,6 +170,40 @@ int _delete(string table, int id){
 //int id = 1;
 //_delete(table,id);
 
+int sql_update (string table, string field, string value , int id){
+   sqlite3 *db;
+   char *zErrMsg = 0;
+   int rc;
+   const char* sql;
+   const char* data = "Callback function called";
+
+   /* Open database */
+   rc = sqlite3_open("vcap.db", &db);
+
+   if( rc ) {
+      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+      return(0);
+   } else {
+      fprintf(stderr, "Opened database successfully\n");
+   }
+
+   /* Create merged SQL statement */
+   string temp = "UPDATE '"+table+"' set '"+field+"' = '"+value+"' where id="+to_string(id)+";";
+    const char *line1 = temp.c_str();
+    sql = line1;
+    cout << sql << endl;
+   /* Execute SQL statement */
+   rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+
+   if( rc != SQLITE_OK ) {
+      fprintf(stderr, "SQL error: %s\n", zErrMsg);
+      sqlite3_free(zErrMsg);
+   } else {
+      fprintf(stdout, "Operation done successfully\n");
+   }
+   sqlite3_close(db);
+   return 0;
+}
 
 
 //   ** SELECT STATEMENTS TO CALL SELECT(). **

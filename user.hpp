@@ -15,3 +15,7 @@ void new_disease();
 void stats();
 void send_msg();
 void user_menu();
+void user_mgmt();
+void update_user();
+void delete_user();
+void list_users();
