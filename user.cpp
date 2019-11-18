@@ -15,13 +15,13 @@ void stats(){
   string sql;
   //Count diseases and orders them by DESC
   sql = "SELECT name,count(name) from Diagnoses , Diseases WHERE diseases.diseaseID = diagnoses.DiseaseID GROUP BY name ORDER BY count(name) desc";
-  //select(sql);
+  select(sql);
   //Return username and the number of diagnoses inputed
   sql = "SELECT username, count(diagnoses.userID) FROM users, diagnoses WHERE users.userID = diagnoses.userID GROUP BY diagnoses.userID";
-  //select(sql);
+  select(sql);
   //Returns the disease within the last 7 days with the count
   sql = "SELECT name , count(diagnoses.diseaseID) FROM diseases, diagnoses WHERE diagnoseDate > (SELECT DATE('now','-7 day')) AND diagnoses.diseaseID=diseases.diseaseID GROUP BY diagnoses.diseaseID";
-  //select(sql);
+  select(sql);
   user_menu();
 }
 
