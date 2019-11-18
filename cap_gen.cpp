@@ -1,5 +1,11 @@
+/*
+Author(s): Courtland Crouchet
+Updated: 11/16/2019
+Description: Use user input to generate a CAP format XML file
+*/
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -185,14 +191,10 @@ void gen_cap()
 	//Instantiate new time object
 	time_t now = time(0);
 	tm *ltm = localtime(&now);
-	// string timestr = ltm->tm_year + "-" +ltm->tm_mon;
-	// timestr += "-" + ltm->tm_mday + "T" + ltm->tm_hour;
-	// timestr += ":" + ltm->tm_min + ":" + ltm->tm_min;
-	// timestr += ":" + ltm->tm_sec;
 
 	capFile << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	capFile << "<alert xmlns = \"urn:oasis:names:tc:emergency:cap:1.1\">\n";
-	capFile << "<identifier></identifier>\n";
+	capFile << "<identifier>" << rand() % 1000 << rand() % 1000 << rand() % 1000 << "</identifier>\n";
 	capFile << "<sender></sender>\n";
 	capFile << "<sent>" << ltm->tm_year+1900 << "-" << ltm->tm_mon+1
 		<< "-" << ltm->tm_mday << "T" << ltm->tm_hour
@@ -222,7 +224,7 @@ void gen_cap()
 }
 
 
-// int main() {
-// 	gen_cap();
-// 	return 0;
-// }
+int main() {
+	gen_cap();
+	return 0;
+}

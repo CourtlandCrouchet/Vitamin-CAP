@@ -1,3 +1,8 @@
+/*
+Author(s): Courtland Crouchet
+Updated: 11/16/2019
+Description: Read a CAP XML file and print relevant attributes
+*/
 #include <string.h>
 #include <stdio.h>
 #include <iostream>
