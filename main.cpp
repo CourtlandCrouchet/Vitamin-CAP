@@ -68,17 +68,17 @@ void listener(){
 
 void menu() {
 	int opt = -1;
-	//bool valid = false;
+	bool valid = false;
 
-	cout << "\n";
-	cout << "Select an Option\n";
-	cout << "[0] - Exit \n";
-	cout << "[1] - User Login\n";
-	cout << "[2] - User Registration\n";
-	cout << "[3] - Run Listener\n";
-	cout << "\n";
+	while(!valid){
+		cout << "\n";
+		cout << "Select an Option\n";
+		cout << "[0] - Exit \n";
+		cout << "[1] - User Login\n";
+		cout << "[2] - User Registration\n";
+		cout << "[3] - Run Listener\n";
+		cout << "\n";
 
-	while(true){
 		cout << "Option: ";
 		cin >> opt;
 
@@ -88,6 +88,7 @@ void menu() {
 		*/
 		switch(opt){
 			case -1: {
+				valid = true;
 				break;
 			}
 			case 0:

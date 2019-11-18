@@ -5,23 +5,23 @@
 */
 .open vcap.db
 create table users(
-userID integer primary key autoincrement,
+id integer primary key autoincrement,
 username text not null,
 password text not null
 );
 
 create table diseases(
-diseaseID integer primary key autoincrement,
+id integer primary key autoincrement,
 name text not null
 );
 
 create table diagnoses(
-diagnoseID integer primary key autoincrement,
+id integer primary key autoincrement,
 diagnoseDate date not null,
 userID int not null,
 diseaseID int not null,
-foreign key (userID) references users(userID),
-foreign key (diseaseID) references diseases(diseaseID)
+foreign key (userID) references users(id),
+foreign key (diseaseID) references diseases(id)
 );
 
 insert into users values(null,"nurse1","password1");

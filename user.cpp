@@ -13,15 +13,22 @@ using namespace std;
 
 void stats(){
   string sql;
-  //Count diseases and orders them by DESC
-  sql = "SELECT name,count(name) from Diagnoses , Diseases WHERE diseases.diseaseID = diagnoses.DiseaseID GROUP BY name ORDER BY count(name) desc";
-  select(sql);
-  //Return username and the number of diagnoses inputed
-  sql = "SELECT username, count(diagnoses.userID) FROM users, diagnoses WHERE users.userID = diagnoses.userID GROUP BY diagnoses.userID";
-  select(sql);
-  //Returns the disease within the last 7 days with the count
-  sql = "SELECT name , count(diagnoses.diseaseID) FROM diseases, diagnoses WHERE diagnoseDate > (SELECT DATE('now','-7 day')) AND diagnoses.diseaseID=diseases.diseaseID GROUP BY diagnoses.diseaseID";
-  select(sql);
+
+  cout << "Count diseases and orders them by DESC" << endl;
+  sql = "SELECT name,count(name) from Diagnoses , Diseases WHERE diseases.id = diagnoses.DiseaseID GROUP BY name ORDER BY count(name) desc;";
+  sql_select(sql);
+  cout << "\n";
+
+  cout << "Return username and the number of diagnoses inputed" << endl;
+  sql = "SELECT username, count(diagnoses.userID) FROM users, diagnoses WHERE users.id = diagnoses.userID GROUP BY diagnoses.userID;";
+  sql_select(sql);
+  cout << "\n";
+
+  cout << "Returns the disease within the last 7 days with the count" << endl;
+  sql = "SELECT name , count(diagnoses.diseaseID) FROM diseases, diagnoses WHERE diagnoseDate > (SELECT DATE('now','-7 day')) AND diagnoses.diseaseID=diseases.id GROUP BY diagnoses.diseaseID;";
+  sql_select(sql);
+  cout << "\n";
+
   user_menu();
 }
 
@@ -70,14 +77,14 @@ void new_menu(){
   int opt = -1;
 	bool valid = false;
 
-  cout << "\n";
-	cout << "Select an Option\n";
-	cout << "[0] - Back \n";
-	cout << "[1] - New Diagnose\n";
-	cout << "[2] - New Disease\n";
-	cout << "\n";
-
 	while(!valid){
+
+    cout << "\n";
+  	cout << "Select an Option\n";
+  	cout << "[0] - Back \n";
+  	cout << "[1] - New Diagnose\n";
+  	cout << "[2] - New Disease\n";
+  	cout << "\n";
 		/* todo:
 					- check for characters
           - fix flow bugs
@@ -123,18 +130,17 @@ void user_menu() {
   int opt = -1;
 	bool valid = false;
 
-  cout << "\n";
-	cout << "Select an Option\n";
-	cout << "[0] - Back \n";
-	cout << "[1] - Input New\n";
-	cout << "[2] - Statistics\n";
-  cout << "[3] - Send Message\n";
-	cout << "\n";
-
   // cout << "Option:";
   // cin >> opt;
 
 	while(!valid){
+    cout << "\n";
+  	cout << "Select an Option\n";
+  	cout << "[0] - Back \n";
+  	cout << "[1] - Input New\n";
+  	cout << "[2] - Statistics\n";
+    cout << "[3] - Send Message\n";
+  	cout << "\n";
 		/* todo:
 					- check for characters
           - fix flow bugs

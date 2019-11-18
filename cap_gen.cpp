@@ -224,7 +224,7 @@ void gen_cap()
 }
 
 
-int main() {
-	gen_cap();
-	return 0;
-}
+// int main() {
+// 	gen_cap();
+// 	return 0;
+// }

@@ -13,3 +13,5 @@ using namespace std;
 static int callback(void *NotUsed, int argc, char **argv, char **azColName);
 int insert(string table, string query);
 int user_auth(string username, string password);
+int sql_select(string query);
+int _delete(string table, int id);
