@@ -1,3 +1,8 @@
+/*
+Author(s): Raphaela
+Updated: 10/20/19
+Description: Main program of the application
+*/
 #include <iostream>
 
 using namespace std;

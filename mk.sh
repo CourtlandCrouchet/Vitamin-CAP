@@ -8,4 +8,5 @@ g++ -o main \
       server.cpp \
       cap_parse.cpp \
       db_functions.cpp \
-      -lsqlite3
+      -lsqlite3 \
+      -pthread
