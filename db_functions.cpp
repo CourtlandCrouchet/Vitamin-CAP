@@ -167,19 +167,23 @@ int _delete(string table, int id){
 
 //   ** SELECT STATEMENTS TO CALL SELECT(). **
 //Count diseases and orders them by DESC
-//string sql = "SELECT name,count(name) from Diagnoses , Diseases WHERE diseases.diseaseID = diagnoses.DiseaseID GROUP BY name ORDER BY count(name) desc";
-
-
-
+//string sql = "SELECT name,count(name) from Diagnoses , Diseases WHERE diseases.id = diagnoses.DiseaseID GROUP BY name ORDER BY count(name) desc;";
 //Return username and the number of diagnoses inputed
-//string sql = "SELECT username, count(diagnoses.userID) FROM users, diagnoses WHERE users.userID = diagnoses.userID GROUP BY diagnoses.userID";
+//string sql = "SELECT username, count(diagnoses.userID) FROM users, diagnoses WHERE users.id = diagnoses.userID GROUP BY diagnoses.userID;";
 //Returns the disease within the last 7 days with the count
-//string sql = "SELECT name , count(diagnoses.diseaseID) FROM diseases, diagnoses WHERE diagnoseDate > (SELECT DATE('now','-7 day')) AND diagnoses.diseaseID=diseases.diseaseID GROUP BY diagnoses.diseaseID";
-//select(sql);
-
-// SELECT * FROM session WHERE stop_time > (SELECT DATETIME('now', '-7 day'))
+//string sql = "SELECT name , count(diagnoses.diseaseID) FROM diseases, diagnoses WHERE diagnoseDate > (SELECT DATE('now','-7 day')) AND diagnoses.diseaseID=diseases.id GROUP BY diagnoses.diseaseID;";
+///select(sql);
 
 // ***BELOW ARE HOW THE FUNCTIONS ARE CALLED***
+
+
+
+
+
+
+
+
+
 
 //User auth function
 /*
