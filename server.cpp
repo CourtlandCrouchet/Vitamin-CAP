@@ -32,12 +32,12 @@ struct Client{
 void *Thread(void *args) {
     Client *clientinfo=(Client *)args;
     pthread_t myid=pthread_self();
-    printf("Thread %p is alive and serving new client @ %s:%d\n",myid, clientinfo->ip, clientinfo->port);
+    printf("Thread %p - message sent to client %s:%d\n",myid, clientinfo->ip, clientinfo->port);
     //Send message to client
     write(clientinfo->fd, clientinfo->message.c_str(), clientinfo->message.size());
-    printf("Thread %p closed connection with client, dying.\n", myid);
+    printf("Thread %p - connection closed\n", myid);
     free(args);
-    printf("Press q to quit or any other key to accept more clients\n");
+    printf("Press 0 to quit, or any key to continue\n");
     return NULL;
 }
 
@@ -65,7 +65,7 @@ void SetupHospital(int port, string message){
 
     while(1){
         Client* customer = new Client;
-        cout << "Now accepting clients..." << endl;
+        cout << "Waiting on clients..." << endl;
         //Clear out space for client
         bzero(&cli_addr, sizeof(cli_addr));
         clilen = sizeof(cli_addr);
@@ -81,7 +81,7 @@ void SetupHospital(int port, string message){
         pthread_create(&client_thread, NULL, Thread, customer);
         //option to quit
         cin >> in;
-        if(in == 'q'){
+        if(in == '0'){
             return;
         }
     }

@@ -112,6 +112,7 @@ void new_menu(){
         cout << "\nInvalid option, please try again." << endl;
       }
 		} //switch
+    //opt = -1;
 	}//while
 }
 
