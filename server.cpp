@@ -82,6 +82,7 @@ void SetupHospital(int port, string message){
         //option to quit
         cin >> in;
         if(in == '0'){
+            close(sockfd);
             return;
         }
     }

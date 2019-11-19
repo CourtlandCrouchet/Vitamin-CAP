@@ -55,3 +55,7 @@ insert into diagnoses values(null,'2019-09-13',04,03);
 insert into diagnoses values(null,'2019-08-05',01,02);
 insert into diagnoses values(null,'2019-09-08',02,08);
 insert into diagnoses values(null,'2019-09-01',05,03);
+insert into diagnoses values(null,'2019-11-13',05,01);
+insert into diagnoses values(null,'2019-11-13',05,01);
+insert into diagnoses values(null,'2019-11-13',05,01);
+insert into diagnoses values(null,'2019-11-13',05,01);
