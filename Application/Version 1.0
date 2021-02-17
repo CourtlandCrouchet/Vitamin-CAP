@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  int consoleChoice = 0;
+  
+  while(consoleChoice != 6){
+    
+    switch(consoleChoice){
+
+      case 0:
+      break;
+
+      case 1: 
+      cout<<"Login Page Here: \n";
+      cout <<"Username and Password things: \n";
+      break;
+
+      case 2:
+      cout<<"Registration User Page Here: \n";
+      cout<<"Register user things here: \n";
+      break;
+
+      case 3:
+      cout<<"Register Out Break Case Here: \n";
+      cout<<"Register cases here: \n";
+      break;
+
+      case 4:
+      cout<<"Send Out Break Information Here: \n";
+      cout<<"People are dying and the world should know \n";
+      break;
+    
+      case 5:
+      cout << "thanks for testing\n";
+      return 0;
+
+
+      default: cout<<"Error: Not Valid Selection:\n ";
+      cout<<"you done messed up a-a-ron \n";
+      break;
+    }
+    
+    cout<< "Test Application V1 \n";
+    cout<< "Select an Option\n";
+    cout<< "[1] - User Login\n";
+    cout<< "[2] - User Registration\n";
+    cout<< "[3] - Break Out Case Log\n";
+    cout<< "[4] - Send Correspondence\n"; 
+    cout<<"[5] - Quit Application: \n";
+    cout<<"\n";
+    cin>> consoleChoice;
+  }
+  return 0;
+}
